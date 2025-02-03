@@ -71,7 +71,7 @@ const twilioClient = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_A
 
         try {
             const result = await generateText({
-                model: openai("gpt-4o"),
+                model: openai("gpt-4o-mini"),
                 tools: tools,
                 maxSteps: 10,
                 prompt: body,
