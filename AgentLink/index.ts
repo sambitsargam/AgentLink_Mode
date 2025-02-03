@@ -1,20 +1,23 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import { uniswap } from "@goat-sdk/plugin-uniswap";
+import { modespray } from "@goat-sdk/plugin-modespray";
 import { pumpfun } from "@goat-sdk/plugin-pumpfun";
 import { openai } from "@ai-sdk/openai";
 import { generateText } from "ai";
+import { opensea } from "@goat-sdk/plugin-opensea";
 import { http } from "viem";
 import { createWalletClient } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
-import { polygon } from "viem/chains";
+import { modeTestnet } from "viem/chains";
 import twilio from "twilio";
 import { getOnChainTools } from "@goat-sdk/adapter-vercel-ai";
-import { USDC, erc20 } from "@goat-sdk/plugin-erc20";
+import { MODE, USDC, erc20 } from "@goat-sdk/plugin-erc20";
 import { kim } from "@goat-sdk/plugin-kim";
 import { coingecko } from "@goat-sdk/plugin-coingecko";
 import { sendETH } from "@goat-sdk/wallet-evm";
 import { viem } from "@goat-sdk/wallet-viem";
+import { modeGovernance } from "@goat-sdk/plugin-mode-governance";
 
 
 require("dotenv").config();
@@ -26,7 +29,7 @@ const account = privateKeyToAccount(process.env.KEY as `0x${string}`);
 const walletClient = createWalletClient({
     account: account,
     transport: http(process.env.RPC_PROVIDER_URL),
-    chain: polygon,
+    chain: modeTestnet,
 });
 
 const twilioClient = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
@@ -36,9 +39,14 @@ const twilioClient = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_A
     const tools = await getOnChainTools({
         wallet: viem(walletClient),
         plugins: [
+            sendETH(),
+            erc20({ tokens: [USDC, MODE] }),
             kim(),
+            modespray(),
             coingecko({ apiKey: "CG-omKTqVxpPKToZaXWYBb8bCJJ" }),
-            pumpfun(),
+            opensea(process.env.OPENSEA_API_KEY as string),
+           // pumpfun(),
+           modeGovernance(),
         ],
     });
 
