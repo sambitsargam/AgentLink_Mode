@@ -1,4 +1,4 @@
-**AgentLink AgentChat: Bridging Blockchain with WhatsApp Messaging**  
+## AgentLink AgentChat: Bridging Blockchain with WhatsApp Messaging
 
 ### **Overview**  
 AgentChat is an innovative WhatsApp-based messaging agent built on **Mode Chain**, enabling users to interact with blockchain seamlessly. With **simple text-based commands**, users can perform **on-chain transactions, send funds, swap tokens, access real-time currency data, and manage smart contracts**—all within WhatsApp. This approach makes blockchain functionalities **accessible, intuitive, and convenient** for both crypto-savvy users and newcomers.  
