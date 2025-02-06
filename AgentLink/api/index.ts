@@ -90,7 +90,7 @@ app.use(bodyParser.json());
 
         try {
             const result = await generateText({
-                model: openai("gpt-4o-mini"),
+                model: openai("gpt-4o"),
                 tools: tools,
                 maxSteps: 10,
                 prompt: body,
@@ -108,8 +108,9 @@ app.use(bodyParser.json());
         }
     });
 
-    const PORT = process.env.PORT || 3000;
+    const PORT = process.env.PORT || 8080;
     app.listen(PORT, () => {
         console.log(`Server is running on port ${PORT}`);
     });
+    module.exports = app;
 })();

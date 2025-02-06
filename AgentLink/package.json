@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "npx ts-node api/index.ts",
-    "start": "npx ts-node api/index.ts",
-    "vercel-build": "npm run build"
+    "start": "npx ts-node api/index.ts"
   },
   "dependencies": {
     "@ai-sdk/openai": "^1.0.4",
