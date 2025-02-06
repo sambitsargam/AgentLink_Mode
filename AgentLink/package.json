@@ -1,14 +1,12 @@
 {
   "name": "ai-app",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "vercel-build": "npm run build"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
     "@ai-sdk/openai": "^1.0.4",
     "@goat-sdk/adapter-vercel-ai": "^0.2.0",
@@ -30,13 +28,14 @@
     "express": "^4.21.2",
     "install": "^0.13.0",
     "npm": "^10.9.2",
-    "ts-node": "10.9.2",
     "twilio": "^5.4.0",
     "viem": "^2.21.49",
     "zod": "^3.24.1"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
-    "@types/node": "^22.10.2"
+    "@types/node": "^22.10.2",
+    "typescript": "^5.3.3",
+    "ts-node": "10.9.2"
   }
 }
